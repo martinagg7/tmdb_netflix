@@ -26,3 +26,14 @@ def obtener_detalle_serie(serie_id):
     if response.status_code == 200:
         return response.json()
     return {"error": "No se pudieron obtener los detalles de la serie"}
+
+def obtener_airing_today():
+    url = f"{BASE_URL}/tv/airing_today"  
+    params = {
+        "api_key": settings.TMDB_API_KEY,
+        "language": "es-ES",
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        return response.json()
+    return {"error": "No se pudieron obtener las series que se emiten hoy"}

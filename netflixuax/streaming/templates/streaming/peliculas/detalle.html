@@ -9,12 +9,20 @@
 </head>
 <body>
     <div class="detalle-container">
-        <img src="https://image.tmdb.org/t/p/w500{{ detalles.poster_path }}" alt="{{ detalles.title }}">
-        <h1>{{ detalles.title }}</h1>
-        <p><strong>Resumen:</strong> {{ detalles.overview }}</p>
-        <p><strong>Fecha de Estreno:</strong> {{ detalles.release_date }}</p>
-        <p><strong>Calificación:</strong> {{ detalles.vote_average }}</p>
-        <a href="{% url 'now_playing' %}" class="boton-volver">Volver</a>
+        <img src="https://image.tmdb.org/t/p/w500{{ detalles.poster_path }}" alt="{{ detalles.title }}" style="display: block; margin: 20px auto; max-width: 300px; border-radius: 10px;">
+        <h1 style="text-align: center;">{{ detalles.title }}</h1>
+        <div style="text-align: center; padding: 20px;">
+            <p><strong>Resumen:</strong> {{ detalles.overview }}</p>
+            <p><strong>Fecha de Estreno:</strong> {{ detalles.release_date }}</p>
+            <p><strong>Duración:</strong> {{ detalles.runtime }} minutos</p>
+            <p><strong>Géneros:</strong> 
+                {% for genero in detalles.genres %}
+                    {{ genero.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Idioma Original:</strong> {{ detalles.original_language }}</p>
+        </div>
+        <a href="{% url 'now_playing' %}" class="boton-volver" style="display: block; width: 200px; margin: 20px auto; text-align: center;">Volver</a>
     </div>
 </body>
 </html>

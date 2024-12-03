@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Serie</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="detalle-serie">
+        <h1 style="text-align: center;">{{ detalles.name }}</h1>
+        <img src="https://image.tmdb.org/t/p/w500{{ detalles.poster_path }}" alt="{{ detalles.name }}" class="detalle-imagen" style="display: block; margin: 20px auto;">
+        
+        <div class="detalle-descripcion" style="text-align: center; padding: 20px;">
+            <p><strong>Resumen:</strong> {{ detalles.overview }}</p>
+            <p><strong>Fecha de estreno:</strong> {{ detalles.first_air_date }}</p>
+            <p><strong>Calificación:</strong> {{ detalles.vote_average }} / 10 ({{ detalles.vote_count }} votos)</p>
+            <p><strong>Número de temporadas:</strong> {{ detalles.number_of_seasons }}</p>
+            <p><strong>Número de episodios:</strong> {{ detalles.number_of_episodes }}</p>
+            <p><strong>Idiomas disponibles:</strong> 
+                {% for idioma in detalles.spoken_languages %}
+                    {{ idioma.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+
+        <a href="{% url 'popular_series' %}" class="boton-volver" style="display: block; width: 200px; margin: 20px auto; text-align: center;">Volver a Series Populares</a>
+    </div>
+</body>
+</html>
