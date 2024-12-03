@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .scripts.peliculas import peliculas_populares, now_playing, top_rated, detalle_pelicula
 from .scripts.series import obtener_series_populares,obtener_detalle_serie,obtener_airing_today
+from .scripts.search import obtener_buscar
 def inicio(request):
     peliculas = peliculas_populares()
     return render(request, 'streaming/peliculas/now_playing.html', {'peliculas': peliculas})
@@ -30,3 +31,15 @@ def detalle_serie(request, serie_id):
 def airing_today(request):
     series = obtener_airing_today()  
     return render(request, 'streaming/series/airing_today.html', {'series': series})
+
+#BUSQUEDA
+
+
+def buscar(request):
+    texto = request.GET.get('q', '')  # Obtiene el texto ingresado en el formulario
+    resultados = {}
+
+    if texto:  # Si hay texto en la búsqueda
+        resultados = obtener_buscar(texto)
+
+    return render(request, 'streaming/buscar.html', {'resultados': resultados, 'texto': texto})

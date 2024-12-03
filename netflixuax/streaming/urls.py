@@ -9,6 +9,7 @@ urlpatterns = [
     path('series/populares/', views.series_populares, name='popular_series'),
     path('series/detalle/<int:serie_id>/', views.detalle_serie, name='detalle_serie'),
     path('series/airing_today/', views.airing_today, name='airing_today_series'),
+    path('buscar/', views.buscar, name='buscar'),
      
     
     
