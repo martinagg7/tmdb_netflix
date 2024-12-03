@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .scripts.peliculas import buscar_peliculas
 
-# Create your views here.
+
+def buscar(request):
+    query = request.GET.get('q', '')
+    resultados = buscar_peliculas(query) if query else {}
+    return render(request, 'streaming/buscar.html', {'resultados': resultados, 'query': query})

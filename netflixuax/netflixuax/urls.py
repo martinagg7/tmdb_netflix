@@ -22,6 +22,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),  # Rutas de la app "core"
     path('auth/', include('authentication.urls')),  # Rutas de la app "authentication"
+    path('streaming/', include('streaming.urls')),
 ]
