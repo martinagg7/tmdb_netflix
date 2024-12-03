@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rated</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Películas Mejor Calificadas</h1>
+    <div class="peliculas-container">
+        {% if peliculas.results %}
+            {% for pelicula in peliculas.results %}
+                <div class="pelicula">
+                    <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
+                    <h3>{{ pelicula.title }}</h3>
+                    <a href="{% url 'detalle' pelicula.id %}" class="boton-detalle">Ver Detalles</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center;">No se encontraron películas mejor calificadas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

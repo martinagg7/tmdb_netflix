@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ detalles.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="detalle-container">
+        <img src="https://image.tmdb.org/t/p/w500{{ detalles.poster_path }}" alt="{{ detalles.title }}">
+        <h1>{{ detalles.title }}</h1>
+        <p><strong>Resumen:</strong> {{ detalles.overview }}</p>
+        <p><strong>Fecha de Estreno:</strong> {{ detalles.release_date }}</p>
+        <p><strong>Calificación:</strong> {{ detalles.vote_average }}</p>
+        <a href="{% url 'now_playing' %}" class="boton-volver">Volver</a>
+    </div>
+</body>
+</html>
