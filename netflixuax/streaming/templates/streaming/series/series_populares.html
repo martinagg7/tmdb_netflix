@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Populares</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Series Populares</h1>
+    <div class="peliculas-container">
+        {% if series.results %}
+            {% for serie in series.results %}
+                <div class="pelicula">
+                    <img src="https://image.tmdb.org/t/p/w500{{ serie.poster_path }}" alt="{{ serie.name }}">
+                    <h3>{{ serie.name }}</h3>
+                    <a href="{% url 'detalle_serie' serie.id %}" class="boton-detalle">Ver Detalles</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center;">No se encontraron series populares.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
