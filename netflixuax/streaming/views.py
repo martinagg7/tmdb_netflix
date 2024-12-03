@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from .scripts.peliculas import buscar_peliculas
+from .scripts.peliculas import obtener_peliculas_populares
 
-
-def buscar(request):
-    query = request.GET.get('q', '')
-    resultados = buscar_peliculas(query) if query else {}
-    return render(request, 'streaming/buscar.html', {'resultados': resultados, 'query': query})
+def inicio(request):
+    peliculas = obtener_peliculas_populares()  # Llama a la función para obtener las películas populares
+    return render(request, 'streaming/inicio.html', {'peliculas': peliculas})

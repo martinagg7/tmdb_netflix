@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix UAX - Inicio</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li><a href="{% url 'buscar' %}">Buscar Películas</a></li>
+            <li><a href="{% url 'buscar_series' %}">Buscar Series</a></li>
+            <li><a href="{% url 'generos' %}">Géneros</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección de Películas Populares -->
+    <h1>Películas Populares</h1>
+    <div class="peliculas-container">
+        {% for pelicula in peliculas.results %}
+            <div class="pelicula">
+                <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
+                <h3>{{ pelicula.title }}</h3>
+                <p>Fecha de estreno: {{ pelicula.release_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
