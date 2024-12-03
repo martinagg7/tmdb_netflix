@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #creadas x nostros
     "core",
     "authentication",
+    "streaming"
     
 ]
 
