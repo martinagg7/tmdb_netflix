@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Netflix UAX{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#">Películas</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'now_playing' %}">Now Playing</a></li>
+                    <li><a href="{% url 'top_rated_movies' %}">Top Rated</a></li>
+                    <li><a href="{% url 'upcoming_movies' %}">Upcoming</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Series</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'popular_series' %}">Popular</a></li>
+                    <li><a href="{% url 'top_rated_series' %}">Top Rated</a></li>
+                    <li><a href="{% url 'on_the_air' %}">On The Air</a></li>
+                </ul>
+            </li>
+            <li>
+                <form method="GET" action="{% url 'buscar' %}" style="display: inline;">
+                    <input type="text" name="q" placeholder="Buscar..." style="padding: 5px;">
+                    <button type="submit" style="padding: 5px;">Buscar</button>
+                </form>
+            </li>
+            <li><a href="{% url 'perfil' %}">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido dinámico -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>Netflixchuli &copy; 2024</p>
+            <ul class="footer-links">
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
