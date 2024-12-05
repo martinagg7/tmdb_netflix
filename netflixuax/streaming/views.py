@@ -9,33 +9,33 @@ from .models import FavoriteMovie
 
 def inicio(request):
     peliculas = peliculas_populares()
-    return render(request, 'streaming/peliculas/now_playing.html', {'peliculas': peliculas})
+    return render(request, 'streaming/now_playing.html', {'peliculas': peliculas})
 
 # PARA PELICULAS
 def now_playing_view(request):
     peliculas = now_playing()
-    return render(request, 'streaming/peliculas/now_playing.html', {'peliculas': peliculas})
+    return render(request, 'streaming/now_playing.html', {'peliculas': peliculas})
 
 def top_rated_view(request):
     peliculas = top_rated()
-    return render(request, 'streaming/peliculas/top_rated.html', {'peliculas': peliculas})
+    return render(request, 'streaming/top_rated.html', {'peliculas': peliculas})
 
 def detalle(request, pelicula_id):
     detalles = detalle_pelicula(pelicula_id)
-    return render(request, 'streaming/peliculas/detalle.html', {'detalles': detalles})
+    return render(request, 'streaming/detalle.html', {'detalles': detalles})
 
 #PARA SERIES
 def series_populares(request):
     series = obtener_series_populares() 
-    return render(request, 'streaming/series/series_populares.html', {'series': series})
+    return render(request, 'streaming/series_populares.html', {'series': series})
 
 def detalle_serie(request, serie_id):
     serie_detalles = obtener_detalle_serie(serie_id)  
-    return render(request, 'streaming/series/detalle_serie.html', {'detalles': serie_detalles})
+    return render(request, 'streaming/detalle_serie.html', {'detalles': serie_detalles})
 
 def airing_today(request):
     series = obtener_airing_today()  
-    return render(request, 'streaming/series/airing_today.html', {'series': series})
+    return render(request, 'streaming/airing_today.html', {'series': series})
 
 #BUSQUEDA
 def buscar(request):
