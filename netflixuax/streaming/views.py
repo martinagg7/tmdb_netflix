@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .scripts.peliculas import peliculas_populares, now_playing, top_rated, detalle_pelicula
 from .scripts.series import obtener_series_populares,obtener_detalle_serie,obtener_airing_today
 from .scripts.search import obtener_buscar
+#para peliculas favoritas
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import FavoriteMovie
 
 def inicio(request):
     peliculas = peliculas_populares()
@@ -42,3 +46,30 @@ def buscar(request):
         resultados = obtener_buscar(texto)
 
     return render(request, 'streaming/buscar.html', {'resultados': resultados, 'texto': texto})
+
+#PELICULAS FAVORITAS
+
+"""add_to_favorites:nos permite crear una instancia de favorite movie asociada a un usario solo si este está verificado"""
+@login_required 
+def add_to_favorites(request, movie_id):
+    title = request.GET.get("title")
+    poster_path = f"https://image.tmdb.org/t/p/w500{request.GET.get('poster_path')}"
+    
+
+    if FavoriteMovie.objects.filter(user=request.user, movie_id=movie_id).exists():
+        messages.info(request, f"{title} ya está en  favoritos.")
+    else:
+        FavoriteMovie.objects.create(
+            user=request.user,
+            movie_id=movie_id,
+            title=title,
+            poster_path=poster_path
+        )
+        messages.success(request, f"{title} añadida a tus favoritos.")
+    return redirect('favoritos')
+
+""""favoritos:nos lleva al template donde se muestran las pelis faoviritas del usuario"""
+@login_required
+def favoritos(request):
+    favoritos = FavoriteMovie.objects.filter(user=request.user)
+    return render(request, 'streaming/favoritos.html', {'favoritos': favoritos})

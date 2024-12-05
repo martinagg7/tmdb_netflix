@@ -172,3 +172,224 @@ resultados-container {
     color: #fff;
     text-align: center;
 }
+
+.boton-favoritos {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #e50914, #b20710);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boton-favoritos:hover {
+    background: linear-gradient(90deg, #b20710, #8a0000);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.05);
+}/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Navbar */
+nav {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e50914; /* Rojo Netflix */
+}
+
+/* Contenedor de películas */
+.peliculas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta automáticamente el número de tarjetas */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Tarjeta de película */
+.pelicula {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    justify-content: space-between; /* Espacia el contenido verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    padding-bottom: 10px; /* Espacio inferior para el botón */
+}
+
+.pelicula:hover {
+    transform: scale(1.05); /* Amplía ligeramente la tarjeta al pasar el cursor */
+}
+
+.pelicula img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 2px solid #e50914; /* Línea decorativa roja */
+}
+
+.pelicula h3 {
+    margin: 10px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Contenedor de los botones */
+.botones-container {
+    display: flex;
+    justify-content: center; /* Centrar los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 10px;
+}
+
+/* Botón principal para "Ver Detalles" */
+.boton-detalle {
+    margin-top: 10px; /* Espacio superior para separarlo del contenido */
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #e50914, #b20710);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boton-detalle:hover {
+    background: linear-gradient(90deg, #b20710, #8a0000);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Botón secundario para "Añadir a Favoritos" */
+.boton-favorito {
+    margin-top: 10px; /* Espacio superior para separarlo del contenido */
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #e50914, #b20710); /* Mismo degradado que "Ver Detalles" */
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boton-favorito:hover {
+    background: linear-gradient(90deg, #b20710, #8a0000); /* Mismo hover que "Ver Detalles" */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Botón secundario para "Volver" */
+.boton-volver {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #444, #333);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.boton-volver:hover {
+    background: linear-gradient(90deg, #333, #222);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Contenedor de resultados de búsqueda */
+.resultados-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustable al tamaño de la pantalla */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Tarjeta de resultado */
+.resultado {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding-bottom: 10px; /* Espacio inferior */
+}
+
+.resultado:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+}
+
+/* Imagen */
+.resultado img {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover; /* Mantener proporciones de imagen */
+    border-bottom: 2px solid #e50914; /* Línea decorativa */
+}
+
+/* Título */
+.resultado h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}

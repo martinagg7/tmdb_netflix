@@ -10,7 +10,9 @@ urlpatterns = [
     path('series/detalle/<int:serie_id>/', views.detalle_serie, name='detalle_serie'),
     path('series/airing_today/', views.airing_today, name='airing_today_series'),
     path('buscar/', views.buscar, name='buscar'),
+    path('favoritos/', views.favoritos, name='favoritos'),
+    path('add-to-favorites/<int:movie_id>/', views.add_to_favorites, name='add_to_favorites'),
+]
      
     
     
-]

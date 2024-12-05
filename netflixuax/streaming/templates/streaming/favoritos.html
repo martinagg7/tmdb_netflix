@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Favoritos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Mis Películas Favoritas</h1>
+    <div class="peliculas-container">
+        {% if favoritos %}
+            {% for pelicula in favoritos %}
+                <div class="pelicula">
+                    <img src="{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
+                    <h3>{{ pelicula.title }}</h3>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center;">Aún no tienes películas favoritas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

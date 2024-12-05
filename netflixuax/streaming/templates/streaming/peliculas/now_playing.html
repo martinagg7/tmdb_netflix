@@ -15,7 +15,15 @@
                 <div class="pelicula">
                     <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
                     <h3>{{ pelicula.title }}</h3>
-                    <a href="{% url 'detalle' pelicula.id %}" class="boton-detalle">Ver Detalles</a>
+                    <div class="botones-container">
+                        <a href="{% url 'detalle' pelicula.id %}" class="boton-detalle">Ver Detalles</a>
+                        <form method="GET" action="{% url 'add_to_favorites' pelicula.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="title" value="{{ pelicula.title }}">
+                            <input type="hidden" name="poster_path" value="{{ pelicula.poster_path }}">
+                            <button type="submit" class="boton-favorito">Añadir a Favoritos</button>
+                        </form>
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
