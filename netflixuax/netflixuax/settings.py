@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config #guarda clace api
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -135,7 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 #api
-TMDB_API_KEY = config('TMDB_API_KEY')
+TMDB_API_KEY = '5add87292d1a9754cef74c8e1481b461'  
 
 #login 
 LOGIN_URL = '/auth/login/'  # inicio de sesión
