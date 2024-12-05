@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Rated</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'streaming/base.html' %}
+
+{% block title %}
+    Películas Mejor Calificadas
+{% endblock %}
+
+{% block content %}
     <h1 style="text-align: center;">Películas Mejor Calificadas</h1>
     <div class="peliculas-container">
         {% if peliculas.results %}
@@ -15,12 +12,19 @@
                 <div class="pelicula">
                     <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
                     <h3>{{ pelicula.title }}</h3>
-                    <a href="{% url 'detalle' pelicula.id %}" class="boton-detalle">Ver Detalles</a>
+                    <div class="botones-container">
+                        <a href="{% url 'detalle' pelicula.id %}" class="boton-detalle">Ver Detalles</a>
+                        <form method="GET" action="{% url 'add_to_favorites' pelicula.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="title" value="{{ pelicula.title }}">
+                            <input type="hidden" name="poster_path" value="{{ pelicula.poster_path }}">
+                            <button type="submit" class="boton-favorito">Añadir a Favoritos</button>
+                        </form>
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
             <p style="text-align: center;">No se encontraron películas mejor calificadas.</p>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búsqueda</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'streaming/base.html' %}
+
+{% block title %}
+    Búsqueda
+{% endblock %}
+
+{% block content %}
     <h1 style="text-align: center;">Buscar Películas y Series</h1>
     <form method="GET" action="{% url 'buscar' %}" style="text-align: center; margin: 20px;">
         <input type="text" name="q" placeholder="Introduce tu búsqueda..." style="padding: 10px; width: 300px;">
@@ -30,5 +27,4 @@
             <p style="text-align: center;">No se encontraron resultados.</p>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

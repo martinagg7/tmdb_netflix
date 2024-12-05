@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Favoritos</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'streaming/base.html' %}
+
+{% block title %}
+    Mis Favoritos
+{% endblock %}
+
+{% block content %}
     <h1 style="text-align: center;">Mis Películas Favoritas</h1>
     <div class="peliculas-container">
         {% if favoritos %}
@@ -21,5 +18,4 @@
             <p style="text-align: center;">Aún no tienes películas favoritas.</p>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

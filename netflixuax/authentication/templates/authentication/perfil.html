@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Perfil</title>
-</head>
-<body>
-    <h1>Bienvenido, {{ user.username }}</h1>
-    <p>Correo electrónico: {{ user.email }}</p>
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
-</body>
-</html>
+{% extends 'streaming/base.html' %}
+
+{% block title %}
+    Perfil de Usuario
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; margin: 50px;">
+        <h1>Bienvenido, {{ user.username }}</h1>
+        <p>Accede a tus películas favoritas o explora más contenido.</p>
+        <a href="{% url 'favoritos' %}" class="boton-detalle" style="margin-top: 20px;">Ver Mis Favoritos</a>
+    </div>
+{% endblock %}
