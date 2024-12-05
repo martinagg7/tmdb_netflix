@@ -1,14 +1,17 @@
 {
-    "builds": [
+  "builds": [
       {
-        "src": "netflixuax/wsgi.py",
-        "use": "@vercel/python"
+          "src": "netflixuax/wsgi.py",
+          "use": "@vercel/python",
+          "config": {
+              "buildCommand": "python3 manage.py migrate"
+          }
       }
-    ],
-    "routes": [
+  ],
+  "routes": [
       {
-        "src": "/(.*)",
-        "dest": "netflixuax/wsgi.py"
+          "src": "/(.*)",
+          "dest": "netflixuax/wsgi.py"
       }
-    ]
-  }
+  ]
+}
