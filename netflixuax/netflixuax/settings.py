@@ -128,8 +128,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-#api
 
+#api
 TMDB_API_KEY = config('TMDB_API_KEY')
+
+#login 
+"""Si el usuario intenta acceder a perfil sin estar registrado antes lo redirigimos a la pagina login para que pueda hacerlo"""
+LOGIN_URL = '/auth/login/' 

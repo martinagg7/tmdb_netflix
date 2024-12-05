@@ -3,7 +3,8 @@ from django.conf import settings
 
 BASE_URL = "https://api.themoviedb.org/3"
 
-def obtener_buscar(texto): # texto es lo que introduce usuario
+#para buscar tanto en series como en pelis por nombre
+def obtener_buscar(texto): 
    
     url = f"{BASE_URL}/search/multi"
     params = {
