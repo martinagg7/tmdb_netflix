@@ -9,7 +9,7 @@ def signup(request):
     if request.method == 'POST':  
         form = UserCreationForm(request.POST)  
         if form.is_valid():  
-            user = form.save()  #guardamos los datos del user en la base de datos
+            user = form.save()  #guardamos los datos de user en la base de datos
             login(request, user)  
             return redirect('perfil')  
     else:

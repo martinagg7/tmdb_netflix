@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
     {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Netflix UAX{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <!-- Navbar -->
     <nav>
         <ul>
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
@@ -20,7 +20,6 @@
             <li><a href="{% url 'buscar' %}">Buscar</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'perfil' %}">Perfil</a></li>
-                <!-- Formulario seguro para cerrar sesión -->
                 <li>
                     <form action="{% url 'logout' %}" method="POST" style="display: inline;">
                         {% csrf_token %}
@@ -36,14 +35,13 @@
         </ul>
     </nav>
 
-    <!-- Contenido dinámico -->
+
     <main>
         {% block content %}
-        <!-- Aquí se cargará el contenido específico de cada página -->
+        
         {% endblock %}
     </main>
 
-    <!-- Footer -->
     <footer>
         <p style="text-align: center; margin: 20px 0;">Netflixuax - Martina © 2024</p>
     </footer>

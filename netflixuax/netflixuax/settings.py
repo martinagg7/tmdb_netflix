@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,22 +81,27 @@ WSGI_APPLICATION = "netflixuax.wsgi.app"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import os
 
-if os.environ.get('VERCEL'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': '/tmp/db.sqlite3', 
-        }
+DATABASE_URL = "postgresql://neondb_owner:JzQt0wVFc4DM@ep-snowy-lab-a5s9h7ec.us-east-2.aws.neon.tech/neondb?sslmode=require"
+
+
+
+tmpPostgres = urlparse(DATABASE_URL)
+
+# Configuración de la base de datos
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': tmpPostgres.path[1:],   
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': tmpPostgres.port or 5432,
+        'OPTIONS': {
+            'sslmode': 'require',  
+        },
     }
-else:
-    DATABASES = { 
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / "db.sqlite3",  
-        }
-    }
+}
 
 
 # Password validation
@@ -134,6 +140,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
