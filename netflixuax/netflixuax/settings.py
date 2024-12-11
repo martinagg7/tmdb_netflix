@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from urllib.parse import urlparse
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,18 +83,15 @@ WSGI_APPLICATION = "netflixuax.wsgi.app"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
-DATABASE_URL = "postgresql://neondb_owner:JzQt0wVFc4DM@ep-snowy-lab-a5s9h7ec.us-east-2.aws.neon.tech/neondb?sslmode=require"
-
-
+# Obtener la URL de la base de datos desde .env
+DATABASE_URL = config('DATABASE_URL')
 
 tmpPostgres = urlparse(DATABASE_URL)
 
-# Configuración de la base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path[1:],   
+        'NAME': tmpPostgres.path[1:],
         'USER': tmpPostgres.username,
         'PASSWORD': tmpPostgres.password,
         'HOST': tmpPostgres.hostname,
