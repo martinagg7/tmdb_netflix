@@ -1,4 +1,4 @@
-# tmdb_netflix
+
 # Proyecto Web NetflixUAX
 
 Este proyecto es una **web desarrollada en Django** que simula una plataforma similar a Netflix. Permite explorar películas y series, además de gestionar favoritos. Fue desarrollado como parte de un aprendizaje práctico de desarrollo web.
