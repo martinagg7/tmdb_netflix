@@ -82,4 +82,4 @@ Para desplegar este proyecto en **Vercel**, se configuró una base de datos en *
 ## Datos Repositorio
 Nombre Usuario: @martinagg7
 
-Link Repositorio github.com/martinagg7/tmdb_netflix/
+Link Repositorio https://github.com/martinagg7/tmdb_netflix.git
