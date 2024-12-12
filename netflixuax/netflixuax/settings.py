@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from urllib.parse import urlparse
-from decouple import config
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -84,24 +84,28 @@ WSGI_APPLICATION = "netflixuax.wsgi.app"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # Obtener la URL de la base de datos desde .env
-DATABASE_URL = config('DATABASE_URL')
+from urllib.parse import urlparse
+
+# URL completa de la base de datos
+DATABASE_URL = "postgresql://neondb_owner:JzQt0wVFc4DM@ep-snowy-lab-a5s9h7ec.us-east-2.aws.neon.tech/neondb?sslmode=require"
+
 
 tmpPostgres = urlparse(DATABASE_URL)
 
+# Configuración de la base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path[1:],
+        'NAME': tmpPostgres.path[1:],  # Eliminar el primer '/' de la ruta
         'USER': tmpPostgres.username,
         'PASSWORD': tmpPostgres.password,
         'HOST': tmpPostgres.hostname,
         'PORT': tmpPostgres.port or 5432,
         'OPTIONS': {
-            'sslmode': 'require',  
+            'sslmode': 'require',  # Para conexión segura
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
